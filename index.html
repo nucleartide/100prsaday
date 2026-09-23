@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The path from single-digit to 100 PRs a day</title>
+  <link rel="stylesheet" href="deck.css">
+</head>
+<body>
+  <div class="stage" id="main-stage">
+    <div class="viewport" id="deck">
+
+      <!-- ============ Opening ============ -->
+
+      <section class="slide title">
+        <div class="kicker">A structured playbook</div>
+        <h1>The path from single-digit to <span class="accent">100 PRs a day</span></h1>
+        <div class="subtitle">How a small game team can ship faster without sacrificing quality</div>
+        <div class="byline"><strong>Jason</strong> · Senior Game Engineer, MLB</div>
+        <aside class="notes">
+          <p>Welcome. This talk is based on a blog post I've been drafting for the team.</p>
+          <p>Press <b>P</b> on the main window to open this presenter view.</p>
+        </aside>
+      </section>
+
+      <section class="slide center">
+        <div class="kicker">You've seen the claims</div>
+        <p class="big">“I'm shipping <span class="accent">100 PRs</span> a day.”</p>
+        <p class="lede">But it isn't obvious how <em>your</em> team bridges the gap.</p>
+        <div class="chips" style="margin-top: 28px">
+          <span class="chip fragment">You don't work at a frontier lab</span>
+          <span class="chip fragment">You don't have infinite tokens</span>
+          <span class="chip fragment">You're not writing React</span>
+        </div>
+        <aside class="notes">
+          <p>These days you see incredible claims (link to the Grok Bot post) like "I'm shipping 100 PRs a day."</p>
+          <p>But it isn't immediately clear how your team can bridge the gap. You don't work at a frontier lab, you don't have infinite tokens, and you may not be working in React or a language that's particularly well-suited to LLMs.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Where we are today</div>
+        <h2>Our PR throughput</h2>
+        <div class="placeholder">Graph of team PR metrics</div>
+        <aside class="notes">
+          <p>(TODO: graph of metrics.) Show where the team currently sits: single-digit PRs most days.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">So you're skeptical</div>
+        <h2>Is this some kind of joke?</h2>
+        <div class="grid-2">
+          <div class="quote fragment">“It's probably mostly trivial changes. I, too, can twiddle config files and open 10 PRs.”</div>
+          <div class="quote fragment">“Do we even have that many features to build?”</div>
+          <div class="quote fragment">“PR count is a useless metric. What matters is getting the <em>right</em> things done.”</div>
+          <div class="quote fragment">“The code is probably bad. AI over-complicates things when a 1-line change would do.”</div>
+        </div>
+        <aside class="notes">
+          <p>Walk through each objection. These are all fair, and I had all of them too.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">And yet</div>
+        <h2>You'd love to use AI more, but…</h2>
+        <ul class="list">
+          <li class="fragment">You know how to code, and you have opinions.</li>
+          <li class="fragment">You still find yourself <b>micromanaging</b>, pointing out things that don't match your high expectations.</li>
+          <li class="fragment">You might conclude AI just isn't as good as your artisanally crafted, human-written code.</li>
+        </ul>
+        <aside class="notes">
+          <p>At the same time, you'd love to use AI more, but you're skeptical about delegating too much.</p>
+        </aside>
+      </section>
+
+      <!-- ============ A better world ============ -->
+
+      <section class="slide section">
+        <div class="kicker">A better world</div>
+        <h1>AI writes code<br>while you sleep.</h1>
+        <p>As outlandish as it sounds.</p>
+        <aside class="notes">
+          <p>The dream, as outlandish as it sounds, is to have AI write code while you sleep.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">The dream</div>
+        <h2>See your game come to life <span class="accent">sooner</span></h2>
+        <div class="cols">
+          <ul class="list">
+            <li>Keep <b>full control</b> of the design and how the game works.</li>
+            <li>Even with <b>one hour a day</b>, or a small team.</li>
+            <li>High standards and fun gameplay, like a team of experts made it.</li>
+            <li class="muted">Works for your side project, too.</li>
+          </ul>
+          <div class="stack">
+            <div class="callout">But <b>how</b>? How do we have AI do our jobs well, that quickly, without sacrificing quality?</div>
+            <div class="callout teal">How much of the AI hype is BS, and how much isn't?</div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>To see your game design vision (for Card Battle, or your side project) come to life sooner rather than later, while maintaining full control of the design, despite having only an hour a day or a small team.</p>
+          <p>Wouldn't that be the day: seeing the game you've worked on for years see the light of day.</p>
+        </aside>
+      </section>
+
+      <!-- ============ The path forward ============ -->
+
+      <section class="slide">
+        <div class="kicker">The path forward</div>
+        <h2>This phenomenon is real.</h2>
+        <p class="lede">People really are getting that much done, without sacrificing quality. Here's what they're doing, translated for Unity game developers.</p>
+        <div class="grid-3 push">
+          <div class="card"><h3>1 · Understand</h3><p>Map your pipeline: inputs, outputs, stages, baselines.</p></div>
+          <div class="card"><h3>2 · Internalize</h3><p>Develop an intuition for what agents actually are.</p></div>
+          <div class="card"><h3>3 · Accelerate</h3><p>Systematically speed up every stage of the pipeline.</p></div>
+        </div>
+        <aside class="notes">
+          <p>Hi, I'm Jason, a senior game engineer at MLB building an unannounced multiplayer PvP mobile game.</p>
+          <p>This was written to help teammates understand AI techniques, but it applies broadly to indie and small game teams.</p>
+          <p>By the end, you'll be mentally equipped to transform your own setup, or your team, into a PR-generating machine.</p>
+        </aside>
+      </section>
+
+      <!-- ============ 1. Pipeline ============ -->
+
+      <section class="slide section">
+        <div class="num">01</div>
+        <h1>Understand your pipeline</h1>
+        <p>Define your inputs and outputs. Define the stages. Measure the throughput of each stage.</p>
+        <aside class="notes">
+          <p>Draft note: rewrite this framing to have more of a dopamine hit.</p>
+          <p>(TODO: visualization of a Michelin kitchen.)</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Understand your pipeline</div>
+        <h2>Your Kanban board <em>is</em> your pipeline</h2>
+        <div class="cols wide-right">
+          <div class="stack">
+            <p>Every team I've worked on runs off a JIRA board or some Kanban variant.</p>
+            <p class="muted">Tickets don't map 1:1 to merged PRs, but they codify the team-wide process every piece of work goes through.</p>
+          </div>
+          <div class="placeholder">Visualization of a Michelin kitchen</div>
+        </div>
+        <div class="callout push">Key question: <b>what are the inputs and outputs</b> of this board, and <b>what are the stages</b> from input to output?</div>
+        <aside class="notes">
+          <p>Tickets help illuminate the kinds of inputs that enter your team's process.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Understand your pipeline</div>
+        <h2>Inputs and outputs</h2>
+        <div class="io" style="flex: 1">
+          <div class="chips">
+            <span class="chip">Epics</span>
+            <span class="chip">Bugs</span>
+            <span class="chip">Performance fixes</span>
+            <span class="chip">Dependency updates</span>
+            <span class="chip">CI config</span>
+            <span class="chip">In-repo docs</span>
+            <span class="chip">Refactors &amp; code style</span>
+            <span class="chip">Writing &amp; fixing tests</span>
+          </div>
+          <div class="funnel">→</div>
+          <div class="output">
+            <strong>Merged PRs</strong>
+            <span>on the main branch</span>
+          </div>
+        </div>
+        <p class="muted">Each input is usually a ticket, with zero, one, or many PRs on the way to done.</p>
+        <aside class="notes">
+          <p>Epics are big features that need product and system design before being broken down into granular tickets.</p>
+          <p>Your team's inputs and outputs might be different. It helps to write down how your team's work is managed.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Understand your pipeline</div>
+        <h2>Establish a baseline</h2>
+        <div class="cols">
+          <div class="stack">
+            <p>Run a prompt to find your team's output, day over day.</p>
+            <div class="placeholder">The baseline prompt</div>
+          </div>
+          <div class="stack">
+            <p class="muted">Which leads to…</p>
+            <div class="placeholder">The result</div>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>(TODO: include the prompt and its result.)</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Understand your pipeline</div>
+        <h2>The stages</h2>
+        <div class="flow">
+          <div class="node"><strong>Backlog</strong><span>The inputs</span></div>
+          <div class="arrow">→</div>
+          <div class="node"><strong>Implementation</strong><span>Doing what the ticket asks</span></div>
+          <div class="arrow">→</div>
+          <div class="node gate"><div class="gate-tag">Quality gate</div><strong>Tech Review</strong><span>Code review policies</span></div>
+          <div class="arrow">→</div>
+          <div class="node gate"><div class="gate-tag">Quality gate</div><strong>Verification</strong><span>End-to-end by QA or prod</span></div>
+          <div class="arrow">→</div>
+          <div class="node out"><strong>Done</strong><span>Signed off in the current build</span></div>
+        </div>
+        <div class="stack push">
+          <div class="callout teal fragment">Two explicit review stages means quality is <b>built into the pipeline</b>. We aren't churning out slop.</div>
+          <div class="callout fragment">The goal: maximize throughput through this pipeline.</div>
+        </div>
+        <aside class="notes">
+          <p>How do we take our currently slow process and turn it into a shipping machine?</p>
+        </aside>
+      </section>
+
+      <!-- ============ 2. Agents ============ -->
+
+      <section class="slide section">
+        <div class="num">02</div>
+        <h1>Develop an intuition for agents</h1>
+        <p>To speed up the pipeline with AI, we need to understand what we're working with.</p>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Develop an intuition for agents</div>
+        <h2>A coding agent is a <code class="accent">for</code> loop</h2>
+        <div class="cols wide-right">
+          <div class="stack">
+            <p>Think, call a tool, add the result to context, repeat.</p>
+            <p>Until <code class="accent-2">TaskComplete</code> returns true.</p>
+            <p class="big push" style="font-size: 38px">You wield a for loop at your fingertips.</p>
+          </div>
+          <div class="figure"><img src="assets/coding-agent-loop.png" alt="Pseudo-code: a CodingAgent class that loops while the task is incomplete, thinking and executing tools"></div>
+        </div>
+        <aside class="notes">
+          <p>When interacting with a coding agent, it helps to understand the underlying code they're running. They are essentially for loops.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Develop an intuition for agents</div>
+        <h2>You set the loop's condition</h2>
+        <div class="callout" style="font-size: 30px">Frame every request as a condition that is <b>currently unmet</b>, but <b>should be met</b> when the agent is done.</div>
+        <div class="cols push" style="flex: none; margin-top: 40px">
+          <div class="stack">
+            <h3>Run many loops in parallel</h3>
+            <p class="muted">Spin up worktrees. Name your sessions so you can keep track.</p>
+          </div>
+          <div class="chips" style="align-content: center">
+            <span class="chip mono">Jason1</span>
+            <span class="chip mono">Jason2</span>
+            <span class="chip mono">Jason3</span>
+            <span class="chip mono">Jason4</span>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>Name sessions "Jason1, Jason2, Jason3, Jason4" depending on how many you can manage.</p>
+          <p>Muse and Grok Bot offer glimpses of new agentic interfaces, but we don't have access, so the metaphor still holds.</p>
+        </aside>
+      </section>
+
+      <!-- ============ 3. Speeding up ============ -->
+
+      <section class="slide section">
+        <div class="num">03</div>
+        <h1>Speed up every stage</h1>
+        <p>Go through the pipeline systematically and ask: how can agents accelerate this?</p>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="0"></div>
+        <div class="kicker">Stage 1 · Backlog</div>
+        <h2>Curate your backlog</h2>
+        <div class="cols wide-right">
+          <div class="stack">
+            <p class="muted">What lands here:</p>
+            <div class="chips">
+              <span class="chip">Epics</span><span class="chip">Bugs</span><span class="chip">Performance</span>
+              <span class="chip">Dependencies</span><span class="chip">CI config</span><span class="chip">Docs</span>
+              <span class="chip">Refactoring</span>
+            </div>
+          </div>
+          <ul class="list compact">
+            <li class="fragment"><code class="accent-2">atlassian-api</code> skill reads and updates JIRA tickets.</li>
+            <li class="fragment"><b>#product-qa</b> Slack messages automatically become bug tickets.</li>
+            <li class="fragment">A Confluence design doc gets broken down into prioritized tickets.</li>
+            <li class="fragment">Ticket descriptions get reformatted for coding agents.</li>
+            <li class="fragment"><code class="accent-2">/make-ticket</code> captures chores (deps, CI, docs, refactors).</li>
+          </ul>
+        </div>
+        <div class="callout push">The backlog is the input to your PR machine. Keep its quality high.</div>
+        <aside class="notes">
+          <p>Make it as easy as possible to curate, prioritize, and describe the tickets in your backlog.</p>
+          <p>Chores like updating deps or refactoring usually don't have an explicit user-facing request, so make capturing them seamless.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Stage 2 · Implementation · Substrate</div>
+        <h2>AI-friendly architecture</h2>
+        <p class="lede" style="margin-bottom: 22px">Architecture that is hard to mess up, with clear dataflow, interfaces, and conventions.</p>
+        <div class="grid-3" style="gap: 14px">
+          <div class="card tight"><h3>Model-View-Presenter</h3><p>On the client</p></div>
+          <div class="card tight"><h3>Unified UI design system</h3><p>One way to build UI</p></div>
+          <div class="card tight"><h3>Three-tier server</h3><p>Routing, business logic, data, via the repository pattern</p></div>
+          <div class="card tight"><h3>Animation seams</h3><p>Where DOTween animations can be generated</p></div>
+          <div class="card tight"><h3>Minifield sequences</h3><p>Structured animation sequences</p></div>
+          <div class="card tight"><h3><code>IMatchmaker</code></h3><p>Don't mix local and remote matchmaker concerns</p></div>
+        </div>
+        <div class="callout teal push">Codify the principles in agent docs. Use <b>CODEOWNERS</b> as overseers of the architecture.</div>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Stage 2 · Implementation · Skills</div>
+        <h2>Build your own skill stack</h2>
+        <p class="lede">Third-party skill sets rarely fit. Craft your own around your architecture, and around the prompts you keep typing over and over.</p>
+        <div class="callout push" style="font-size: 32px">
+          The key criterion: <b>your work can be done in a single prompt.</b><br>
+          <span class="muted" style="font-size: 26px">Any time you do something manually, ask how to hand it off to AI.</span>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Stage 2 · Implementation · Skills</div>
+        <h2>My skills, extracted from recurring prompts</h2>
+        <div class="grid-3" style="gap: 18px">
+          <div class="card"><h3>Backlog</h3><div class="chips"><span class="chip mono">atlassian-api</span></div></div>
+          <div class="card"><h3>Unity automation</h3><div class="chips"><span class="chip mono">unity-cli</span></div></div>
+          <div class="card"><h3>Git</h3><div class="chips"><span class="chip mono">antislop</span><span class="chip mono">commit-and-push</span><span class="chip mono">draft-pr</span><span class="chip mono">gh-stack</span></div></div>
+          <div class="card" style="grid-column: span 2"><h3>UI creation</h3><div class="chips"><span class="chip mono">create-ui-prefab</span><span class="chip mono">ui</span><span class="chip mono">ui-imgui</span><span class="chip mono">ui-ugui</span><span class="chip mono">ui-uitk</span><span class="chip mono">ui-verification</span><span class="chip mono">optimize-text-mesh-pro</span></div></div>
+          <div class="card"><h3>Maintenance</h3><div class="chips"><span class="chip mono">migrate-minifield-replay</span><span class="chip mono">migrate-screen-to-routable-screen</span><span class="chip mono">unity-package-management</span></div></div>
+        </div>
+        <aside class="notes">
+          <p>With these, I can take a ticket in my backlog and have it run autonomously without any of my input.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Stage 2 · Implementation</div>
+        <h2>Build the factory, not the dish</h2>
+        <div class="cols">
+          <div class="stack">
+            <p>Development becomes a different, interesting exercise:</p>
+            <p class="big" style="font-size: 34px">How do you craft the factory so agents turn well-written tickets into <span class="accent">ready-to-review, self-QA'd PRs</span>?</p>
+          </div>
+          <div class="placeholder">Screenshot of PRs whizzing by</div>
+        </div>
+        <aside class="notes">
+          <p>When you master this, it's amusing to see your PR count just whiz by (see Balatro). This is where you'll see the most visible and satisfying speed-ups.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Stage 2 · Implementation · Loops</div>
+        <h2>Learn to identify loops in your work</h2>
+        <div class="grid-2">
+          <div class="card fragment"><h3>1 · What's the condition?</h3><p>What does "done" look like, concretely and checkably?</p></div>
+          <div class="card fragment"><h3>2 · How does the agent check it?</h3><p>Most of the time: how can the agent check its own work?</p></div>
+        </div>
+        <div class="callout push fragment">Give it the right tools (e.g. the <code>gh</code> CLI) and a way to open a PR when done, and it runs <b>autonomously</b>. End every prompt with <code class="accent">/draft-pr</code>.</div>
+        <aside class="notes">
+          <p>If you can identify, purely as a thought experiment, how the AI could check its work, then with the right skills you can have it run without lifting a finger.</p>
+          <p>Draft note: the post says "2 parts" but only spells out one. Confirm this split.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Stage 2 · Implementation · Loops</div>
+        <h2>Loops in practice</h2>
+        <div class="grid-3" style="gap: 18px">
+          <div class="card"><h3>iOS layout</h3><p>Screenshot, change, screenshot again, compare.</p><div class="stat">2 weeks → 1–2 days</div></div>
+          <div class="card"><h3>Ability graphs</h3><p>Generate graphs until they match the spec.</p><div class="stat">1 month → 2–3 days</div></div>
+          <div class="card"><h3>TDD</h3><p>Write the failing test from my spec, then make it pass.</p></div>
+          <div class="card"><h3>Debug mode</h3><p>Instrument with logs, invoke the code path, repeat until the issue is found.</p></div>
+          <div class="card" style="grid-column: span 2"><h3>Framerate / CPU / memory</h3><p>Profile for a baseline, change, re-profile. Repeat until performance requirements are met.</p></div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Example · iOS layout</div>
+        <h2>A prompt with a checkable condition</h2>
+        <div class="cols wide-left">
+          <div class="prompt">
+            Take screenshots of all the prefabs at iPhone resolution.<br><br>
+            Make every Canvas Scaler consistent: Match Height = 1, reference resolution X × Y.<br><br>
+            Take the screenshots again. They should be equivalent, but the Canvas Scaler settings should now be consistent across the board.<br><br>
+            <span class="cmd">/draft-pr</span> when you're done.
+          </div>
+          <div class="placeholder">Screenshot of the resulting PR</div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="1"></div>
+        <div class="kicker">Example · Bugs</div>
+        <h2>Bugs become loops, too</h2>
+        <div class="cols wide-left">
+          <div class="stack">
+            <div class="prompt">
+              [pasted screenshot]<br><br>
+              Try to repro by writing a failing test in the right code path. Once you've got a failing test, make it pass.<br><br>
+              <span class="cmd">/draft-pr</span> when you're done.
+            </div>
+            <ul class="list" style="margin-top: 10px">
+              <li class="fragment">With enough automation, this runs on ticket creation.</li>
+              <li class="fragment">Juggle many at once with worktrees. Watch your token usage.</li>
+            </ul>
+          </div>
+          <div class="placeholder">Screenshot of the resulting PR</div>
+        </div>
+        <aside class="notes">
+          <p>Grok Bot takes this further by giving individual agents their own computer, so you can do creative things like build an org chart of agents. We don't have an enterprise plan for it, so I'll live in the dark ages until leadership is convinced otherwise.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="2"></div>
+        <div class="kicker">Stage 3 · Tech Review</div>
+        <h2>Human review is the biggest bottleneck</h2>
+        <div class="cols">
+          <div class="stack">
+            <p>People are busy. PRs wait.</p>
+            <div class="callout teal">Major system decisions should <b>always</b> get human review, so the system doesn't go off the rails.</div>
+          </div>
+          <div class="stack">
+            <p class="muted">But a PR should be quick to review if it:</p>
+            <ul class="list">
+              <li>Doesn't introduce new architecture (that's your job)</li>
+              <li>Follows the existing architecture</li>
+              <li>Is modular and isolated</li>
+              <li>Passes static analysis: linters, compilers, Roslyn analyzers, formatters in CI</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>There's nothing particularly special about a human's feedback for changes that work within an existing architecture.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="2"></div>
+        <div class="kicker">Stage 3 · Tech Review</div>
+        <h2>Compound your review comments</h2>
+        <div class="flow" style="margin-top: 12px">
+          <div class="node"><strong>You review</strong><span>Leave comments as usual</span></div>
+          <div class="arrow">→</div>
+          <div class="node"><strong>AI reads each comment</strong><span>and generalizes it</span></div>
+          <div class="arrow">→</div>
+          <div class="node gate"><strong>Encoded</strong><span>Agent rules, AGENT.md, Copilot review instructions</span></div>
+          <div class="arrow">→</div>
+          <div class="node out"><strong>Next PR is better</strong><span>↺ and repeat</span></div>
+        </div>
+        <ul class="list" style="margin-top: 40px">
+          <li class="fragment">Over time, you have fewer and fewer things to say.</li>
+          <li class="fragment">Review becomes a skim, because you've built trust in the system.</li>
+          <li class="fragment">Backlog → implementation → reviewed PR, <b>with no manual intervention</b>.</li>
+        </ul>
+      </section>
+
+      <section class="slide">
+        <div class="tracker" data-stage="3"></div>
+        <div class="kicker">Stage 4 · Verification</div>
+        <h2>We are all SDETs now</h2>
+        <div class="cols">
+          <div class="stack">
+            <p>Unity CLI can send taps to the editor and enter/exit Play Mode, so even end-to-end QA can be automated.</p>
+            <ul class="list">
+              <li class="fragment">Tag UI click targets with identifiers.</li>
+              <li class="fragment">Write <b>feature maps</b> next to prefabs: how to drive them in a standalone Play Mode scene.</li>
+              <li class="fragment">Pause time and tick it forward in controlled increments.</li>
+            </ul>
+          </div>
+          <div class="placeholder">Screenshot of the preview scene</div>
+        </div>
+        <aside class="notes">
+          <p>I don't find true on-device end-to-end verification via computer use valuable. Reserve that for production and product management, since the end-user experience is the one thing that can't be evaluated automatically. That's the whole point.</p>
+        </aside>
+      </section>
+
+      <!-- ============ Implications ============ -->
+
+      <section class="slide section">
+        <div class="num">04</div>
+        <h1>Implications</h1>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Technicalities</div>
+        <h2>AI isn't perfect</h2>
+        <div class="grid-3">
+          <div class="card"><h3>Output varies</h3><p>Results differ between models.</p></div>
+          <div class="card"><h3>Micromanage first</h3><p>Read the traces. Tweak docs and prompts until the agent meets your expectations.</p></div>
+          <div class="card"><h3>Tokens are finite</h3><p>Limits dampen throughput, but don't change any of these techniques.</p></div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">What are we in the end?</div>
+        <h2>We're executive chefs now</h2>
+        <div class="cols">
+          <div class="stack">
+            <p>Card Battle is a years-of-effort scope: multiplayer, PvP, mobile, with recurring content.</p>
+            <p>We're <b>6 engineers</b>. Each of us needs to punch far above our weight.</p>
+          </div>
+          <div class="callout" style="align-self: center">We're not in the coding business anymore. We're in the <b>managing</b> business. We design the dish; our sous chefs carry it out.</div>
+        </div>
+        <aside class="notes">
+          <p>6 engineers, 5 with Nick out.</p>
+          <p>Iron Chef: we prescribe patterns so our sous chefs carry them out. The interesting stuff was always the dish design: the architecture, the systems, the big-picture technical design. We're all executive chefs of our sub-systems.</p>
+        </aside>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Baby steps</div>
+        <h2>Let the gains compound</h2>
+        <div class="ladder">
+          <div class="rung now" style="height: 22%">&lt;10</div>
+          <div class="rung fragment" style="height: 36%">10</div>
+          <div class="rung fragment" style="height: 52%">20</div>
+          <div class="rung fragment" style="height: 74%">50</div>
+          <div class="rung fragment" style="height: 100%">100</div>
+        </div>
+        <p class="muted" style="margin-top: 20px">PRs per day. Most days, we're below 10 today.</p>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Know when to stop</div>
+        <h2>Then focus on what actually matters</h2>
+        <p class="lede">Past a point of diminishing returns, stop building the factory and spend the time on the game.</p>
+        <div class="chips push" style="gap: 16px">
+          <span class="chip">Game balance</span>
+          <span class="chip">The hero's journey &amp; the baseball narrative</span>
+          <span class="chip">Playtesting</span>
+          <span class="chip">Fun</span>
+          <span class="chip">Metagame strategy</span>
+          <span class="chip">Synergy</span>
+          <span class="chip">Money</span>
+        </div>
+      </section>
+
+      <!-- ============ Close ============ -->
+
+      <section class="slide">
+        <div class="kicker">Takeaways</div>
+        <h2>Treat the JIRA board as your pipeline, then speed up every stage</h2>
+        <ul class="list">
+          <li><b>Backlog:</b> manage it with agents.</li>
+          <li><b>Substrate:</b> lay down architecture for agents to follow.</li>
+          <li><b>Implementation:</b> prompt with automated success-criteria loops.</li>
+          <li><b>Review:</b> feed human comments into compounding agent docs.</li>
+          <li><b>Verification:</b> automate it with end-to-end integration tests.</li>
+        </ul>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">The challenge</div>
+        <h2>A 100-PRs-a-day force of nature</h2>
+        <div class="cols">
+          <p class="big" style="font-size: 38px; align-self: center">A shipping machine, equipped to bring <span class="accent">Card Battle</span> to global launch.</p>
+          <div class="placeholder">Screenshot</div>
+        </div>
+      </section>
+
+      <section class="slide section">
+        <h1>Questions?</h1>
+        <p>Try any of these techniques and tell me how it goes.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="progress"><div></div></div>
+  <div class="counter"></div>
+
+  <div class="help">
+    <div class="card">
+      <h3>Keyboard shortcuts</h3>
+      <table>
+        <tr><td>→ / Space</td><td>Next</td></tr>
+        <tr><td>←</td><td>Previous</td></tr>
+        <tr><td>Home / End</td><td>First / last slide</td></tr>
+        <tr><td>12 Enter</td><td>Jump to slide 12</td></tr>
+        <tr><td>F</td><td>Fullscreen</td></tr>
+        <tr><td>P</td><td>Presenter view (notes, next slide, timer)</td></tr>
+        <tr><td>?</td><td>Toggle this help</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <script src="deck.js"></script>
+</body>
+</html>

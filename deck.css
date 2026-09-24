@@ -246,6 +246,15 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 .session strong { font-family: var(--mono); font-size: 34px; color: var(--accent-2); }
 .session span { font-family: var(--mono); font-size: 17px; color: var(--muted); }
 
+.footnote {
+  position: absolute;
+  left: 120px;
+  bottom: 30px;
+  margin: 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+
 .callout {
   border: 1px solid rgba(var(--accent-rgb), 0.45);
   background: rgba(var(--accent-rgb), 0.08);

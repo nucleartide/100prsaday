@@ -229,6 +229,23 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 .pillar h3 { font-size: 40px; margin: 28px 0 14px; }
 .pillar p { font-size: 24px; color: var(--muted); margin: 0; }
 
+.sessions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: auto 0; }
+.session {
+  background: #021330;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 22px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.session .dots { display: flex; gap: 7px; margin-bottom: 22px; }
+.session .dots i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+.session .dots i:nth-child(2) { background: #febc2e; }
+.session .dots i:nth-child(3) { background: #28c840; }
+.session strong { font-family: var(--mono); font-size: 34px; color: var(--accent-2); }
+.session span { font-family: var(--mono); font-size: 17px; color: var(--muted); }
+
 .callout {
   border: 1px solid rgba(var(--accent-rgb), 0.45);
   background: rgba(var(--accent-rgb), 0.08);

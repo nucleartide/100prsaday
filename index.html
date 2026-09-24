@@ -186,23 +186,20 @@
       <section class="slide">
         <div class="kicker">Understand your pipeline</div>
         <h2>The stages</h2>
-        <div class="flow">
+        <div class="flow large">
           <div class="node"><strong>Backlog</strong><span>The inputs</span></div>
           <div class="arrow">→</div>
           <div class="node"><strong>Implementation</strong><span>Doing what the ticket asks</span></div>
           <div class="arrow">→</div>
           <div class="node gate"><div class="gate-tag">Quality gate</div><strong>Tech Review</strong><span>Code review policies</span></div>
           <div class="arrow">→</div>
-          <div class="node gate"><div class="gate-tag">Quality gate</div><strong>Verification</strong><span>End-to-end by QA or prod</span></div>
+          <div class="node gate"><div class="gate-tag">Quality gate</div><strong>Verification</strong><span>End-to-end signoff by QA</span></div>
           <div class="arrow">→</div>
           <div class="node out"><strong>Done</strong><span>Signed off in the current build</span></div>
         </div>
-        <div class="stack push">
-          <div class="callout teal">Two explicit review stages means quality is <b>built into the pipeline</b>. We aren't churning out slop.</div>
-          <div class="callout">The goal: maximize throughput through this pipeline.</div>
-        </div>
         <aside class="notes">
-          <p>How do we take our currently slow process and turn it into a shipping machine?</p>
+          <p>Two explicit review stages means quality is built into the pipeline. We aren't churning out slop.</p>
+          <p>The goal: maximize throughput through this pipeline. How do we take our currently slow process and turn it into a shipping machine?</p>
         </aside>
       </section>
 

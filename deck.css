@@ -346,6 +346,10 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 .flow .node span { font-size: 17px; color: var(--muted); line-height: 1.35; }
 .flow .node.gate { border-color: var(--accent-2); box-shadow: 0 0 0 1px var(--accent-2) inset; }
 .flow .node.out { border-color: var(--accent); }
+.flow.large { margin: auto 0; }
+.flow.large .node { flex: 1 1 0; min-width: 0; min-height: 260px; padding: 28px 14px; gap: 14px; }
+.flow.large .node strong { font-size: 23px; }
+.flow.large .node span { font-size: 19px; }
 .flow .arrow {
   width: 36px;
   display: flex;

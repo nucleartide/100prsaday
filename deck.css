@@ -209,6 +209,28 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
   color: var(--text);
 }
 
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; flex: 1; min-height: 0; }
+.pillar {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--accent-fill);
+  border-radius: 18px;
+  padding: 34px 32px;
+  display: flex;
+  flex-direction: column;
+}
+.pillar .n {
+  font-family: var(--mono);
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+  margin-bottom: auto;
+}
+.pillar h3 { font-size: 40px; margin: 28px 0 14px; }
+.pillar p { font-size: 24px; color: var(--muted); margin: 0; }
+
 .callout {
   border: 1px solid rgba(var(--accent-rgb), 0.45);
   background: rgba(var(--accent-rgb), 0.08);

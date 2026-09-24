@@ -12,7 +12,6 @@
   const help = document.querySelector(".help");
 
   let idx = 0;
-  let step = 0;
   let peer = isPresenter ? window.opener : null;
   let jumpBuffer = "";
 
@@ -21,7 +20,6 @@
     el.innerHTML = STAGES.map((s, i) => `<span class="${i === active ? "on" : ""}">${s}</span>`).join("");
   });
 
-  const fragments = (i) => Array.from(slides[i].querySelectorAll(".fragment"));
   const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
 
   function fit(stage) {
@@ -33,32 +31,23 @@
 
   function render() {
     slides.forEach((s, i) => s.classList.toggle("active", i === idx));
-    fragments(idx).forEach((f, i) => f.classList.toggle("visible", i < step));
     progressBar.style.width = `${((idx + 1) / slides.length) * 100}%`;
     counter.textContent = `${idx + 1} / ${slides.length}`;
-    history.replaceState(null, "", `${location.search}#/${idx + 1}${step ? `/${step}` : ""}`);
+    history.replaceState(null, "", `${location.search}#/${idx + 1}`);
     if (isPresenter) renderPresenter();
   }
 
-  function go(i, s = 0, fromPeer = false) {
+  function go(i, fromPeer = false) {
     idx = clamp(i, 0, slides.length - 1);
-    step = clamp(s, 0, fragments(idx).length);
     render();
     if (!fromPeer) sync();
   }
 
-  function next() {
-    if (step < fragments(idx).length) go(idx, step + 1);
-    else if (idx < slides.length - 1) go(idx + 1, 0);
-  }
-
-  function prev() {
-    if (step > 0) go(idx, step - 1);
-    else if (idx > 0) go(idx - 1, fragments(idx - 1).length);
-  }
+  const next = () => go(idx + 1);
+  const prev = () => go(idx - 1);
 
   function sync() {
-    if (peer && !peer.closed) peer.postMessage({ deck: "sync", idx, step }, "*");
+    if (peer && !peer.closed) peer.postMessage({ deck: "sync", idx }, "*");
   }
 
   function openPresenter() {
@@ -67,7 +56,7 @@
 
   window.addEventListener("message", (e) => {
     const data = e.data || {};
-    if (data.deck === "sync") go(data.idx, data.step, true);
+    if (data.deck === "sync") go(data.idx, true);
     if (data.deck === "hello") {
       peer = e.source;
       sync();
@@ -75,9 +64,8 @@
   });
 
   function parseHash() {
-    const m = location.hash.match(/^#\/(\d+)(?:\/(\d+))?/);
-    if (m) go(Number(m[1]) - 1, Number(m[2] || 0), true);
-    else go(0, 0, true);
+    const m = location.hash.match(/^#\/(\d+)/);
+    go(m ? Number(m[1]) - 1 : 0, true);
   }
 
   document.addEventListener("keydown", (e) => {
@@ -148,22 +136,18 @@
   }
 
   function renderPresenter() {
-    const upcoming = step < fragments(idx).length ? slides[idx] : slides[idx + 1];
+    const upcoming = slides[idx + 1];
     nextViewport.innerHTML = "";
     if (upcoming) {
       const clone = upcoming.cloneNode(true);
       clone.classList.add("active");
-      const frags = Array.from(clone.querySelectorAll(".fragment"));
-      const shown = upcoming === slides[idx] ? step + 1 : 0;
-      frags.forEach((f, i) => f.classList.toggle("visible", i < shown));
       nextViewport.appendChild(clone);
     } else {
       nextViewport.innerHTML = `<div class="p-end">End of deck</div>`;
     }
     const notes = slides[idx].querySelector(".notes");
     notesEl.innerHTML = notes ? notes.innerHTML : `<p class="muted">No notes for this slide.</p>`;
-    const fragCount = fragments(idx).length;
-    countEl.textContent = `${idx + 1} / ${slides.length}${fragCount ? ` · step ${step}/${fragCount}` : ""}`;
+    countEl.textContent = `${idx + 1} / ${slides.length}`;
   }
 
   if (isPresenter) setupPresenter();

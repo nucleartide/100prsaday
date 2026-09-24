@@ -57,9 +57,7 @@ html, body {
   padding: 64px 88px 72px;
   display: flex;
   flex-direction: column;
-  opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s;
   background:
     radial-gradient(1200px 600px at 110% -10%, rgba(var(--accent-rgb), 0.07), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, rgba(var(--accent-2-rgb), 0.08), transparent 60%),
@@ -93,7 +91,7 @@ html, body {
 #deck:has(.slide.title.active, .slide.section.active) .brand { display: none; }
 .slide.title .logo { width: 170px; margin-bottom: 36px; }
 
-.slide.active { opacity: 1; visibility: visible; }
+.slide.active { visibility: visible; }
 .slide .notes { display: none; }
 
 .slide.center { justify-content: center; }
@@ -397,15 +395,6 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
   color: var(--muted);
 }
 
-/* ---------- Fragments ---------- */
-
-.fragment {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.fragment.visible { opacity: 1; transform: none; }
-
 /* ---------- Chrome ---------- */
 
 .progress {
@@ -417,7 +406,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
   background: rgba(255, 255, 255, 0.06);
   z-index: 10;
 }
-.progress > div { height: 100%; width: 0; background: var(--accent-fill); transition: width 0.3s ease; }
+.progress > div { height: 100%; width: 0; background: var(--accent-fill); }
 
 .counter {
   position: fixed;
@@ -472,7 +461,6 @@ body.presenter .progress, body.presenter .counter { display: none; }
   color: var(--muted);
 }
 .p-panel .stage { height: 30vh; flex: none; border-radius: 8px; }
-.p-panel .stage .slide { transition: none; }
 .p-end {
   height: 100%;
   display: flex;

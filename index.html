@@ -29,9 +29,9 @@
         <p class="big">“I'm shipping <span class="accent">100 PRs</span> a day.”</p>
         <p class="lede">But it isn't obvious how <em>your</em> team bridges the gap.</p>
         <div class="chips" style="margin-top: 28px">
-          <span class="chip fragment">You don't work at a frontier lab</span>
-          <span class="chip fragment">You don't have infinite tokens</span>
-          <span class="chip fragment">You're not writing React</span>
+          <span class="chip">You don't work at a frontier lab</span>
+          <span class="chip">You don't have infinite tokens</span>
+          <span class="chip">You're not writing React</span>
         </div>
         <aside class="notes">
           <p>These days you see incredible claims (link to the Grok Bot post) like "I'm shipping 100 PRs a day."</p>
@@ -52,10 +52,10 @@
         <div class="kicker">So you're skeptical</div>
         <h2>Is this some kind of joke?</h2>
         <div class="grid-2">
-          <div class="quote fragment">“It's probably mostly trivial changes. I, too, can twiddle config files and open 10 PRs.”</div>
-          <div class="quote fragment">“Do we even have that many features to build?”</div>
-          <div class="quote fragment">“PR count is a useless metric. What matters is getting the <em>right</em> things done.”</div>
-          <div class="quote fragment">“The code is probably bad. AI over-complicates things when a 1-line change would do.”</div>
+          <div class="quote">“It's probably mostly trivial changes. I, too, can twiddle config files and open 10 PRs.”</div>
+          <div class="quote">“Do we even have that many features to build?”</div>
+          <div class="quote">“PR count is a useless metric. What matters is getting the <em>right</em> things done.”</div>
+          <div class="quote">“The code is probably bad. AI over-complicates things when a 1-line change would do.”</div>
         </div>
         <aside class="notes">
           <p>Walk through each objection. These are all fair, and I had all of them too.</p>
@@ -66,9 +66,9 @@
         <div class="kicker">And yet</div>
         <h2>You'd love to use AI more, but…</h2>
         <ul class="list">
-          <li class="fragment">You know how to code, and you have opinions.</li>
-          <li class="fragment">You still find yourself <b>micromanaging</b>, pointing out things that don't match your high expectations.</li>
-          <li class="fragment">You might conclude AI just isn't as good as your artisanally crafted, human-written code.</li>
+          <li>You know how to code, and you have opinions.</li>
+          <li>You still find yourself <b>micromanaging</b>, pointing out things that don't match your high expectations.</li>
+          <li>You might conclude AI just isn't as good as your artisanally crafted, human-written code.</li>
         </ul>
         <aside class="notes">
           <p>At the same time, you'd love to use AI more, but you're skeptical about delegating too much.</p>
@@ -111,9 +111,9 @@
         <div class="kicker">The path forward</div>
         <h2>This phenomenon is real.</h2>
         <div class="pillars">
-          <div class="pillar fragment"><div class="n">01</div><h3>Understand</h3><p>Map your pipeline: inputs, outputs, stages, baselines.</p></div>
-          <div class="pillar fragment"><div class="n">02</div><h3>Internalize</h3><p>Develop an intuition for what agents actually are.</p></div>
-          <div class="pillar fragment"><div class="n">03</div><h3>Accelerate</h3><p>Systematically speed up every stage of the pipeline.</p></div>
+          <div class="pillar"><div class="n">01</div><h3>Understand</h3><p>Map your pipeline: inputs, outputs, stages, baselines.</p></div>
+          <div class="pillar"><div class="n">02</div><h3>Internalize</h3><p>Develop an intuition for what agents actually are.</p></div>
+          <div class="pillar"><div class="n">03</div><h3>Accelerate</h3><p>Systematically speed up every stage of the pipeline.</p></div>
         </div>
         <aside class="notes">
           <p>Hi, I'm Jason, a senior game engineer at MLB building an unannounced multiplayer PvP mobile game.</p>
@@ -211,8 +211,8 @@
           <div class="node out"><strong>Done</strong><span>Signed off in the current build</span></div>
         </div>
         <div class="stack push">
-          <div class="callout teal fragment">Two explicit review stages means quality is <b>built into the pipeline</b>. We aren't churning out slop.</div>
-          <div class="callout fragment">The goal: maximize throughput through this pipeline.</div>
+          <div class="callout teal">Two explicit review stages means quality is <b>built into the pipeline</b>. We aren't churning out slop.</div>
+          <div class="callout">The goal: maximize throughput through this pipeline.</div>
         </div>
         <aside class="notes">
           <p>How do we take our currently slow process and turn it into a shipping machine?</p>
@@ -287,11 +287,11 @@
             </div>
           </div>
           <ul class="list compact">
-            <li class="fragment"><code class="accent-2">atlassian-api</code> skill reads and updates JIRA tickets.</li>
-            <li class="fragment"><b>#product-qa</b> Slack messages automatically become bug tickets.</li>
-            <li class="fragment">A Confluence design doc gets broken down into prioritized tickets.</li>
-            <li class="fragment">Ticket descriptions get reformatted for coding agents.</li>
-            <li class="fragment"><code class="accent-2">/make-ticket</code> captures chores (deps, CI, docs, refactors).</li>
+            <li><code class="accent-2">atlassian-api</code> skill reads and updates JIRA tickets.</li>
+            <li><b>#product-qa</b> Slack messages automatically become bug tickets.</li>
+            <li>A Confluence design doc gets broken down into prioritized tickets.</li>
+            <li>Ticket descriptions get reformatted for coding agents.</li>
+            <li><code class="accent-2">/make-ticket</code> captures chores (deps, CI, docs, refactors).</li>
           </ul>
         </div>
         <div class="callout push">The backlog is the input to your PR machine. Keep its quality high.</div>
@@ -365,10 +365,10 @@
         <div class="kicker">Stage 2 · Implementation · Loops</div>
         <h2>Learn to identify loops in your work</h2>
         <div class="grid-2">
-          <div class="card fragment"><h3>1 · What's the condition?</h3><p>What does "done" look like, concretely and checkably?</p></div>
-          <div class="card fragment"><h3>2 · How does the agent check it?</h3><p>Most of the time: how can the agent check its own work?</p></div>
+          <div class="card"><h3>1 · What's the condition?</h3><p>What does "done" look like, concretely and checkably?</p></div>
+          <div class="card"><h3>2 · How does the agent check it?</h3><p>Most of the time: how can the agent check its own work?</p></div>
         </div>
-        <div class="callout push fragment">Give it the right tools (e.g. the <code>gh</code> CLI) and a way to open a PR when done, and it runs <b>autonomously</b>. End every prompt with <code class="accent">/draft-pr</code>.</div>
+        <div class="callout push">Give it the right tools (e.g. the <code>gh</code> CLI) and a way to open a PR when done, and it runs <b>autonomously</b>. End every prompt with <code class="accent">/draft-pr</code>.</div>
         <aside class="notes">
           <p>If you can identify, purely as a thought experiment, how the AI could check its work, then with the right skills you can have it run without lifting a finger.</p>
           <p>Draft note: the post says "2 parts" but only spells out one. Confirm this split.</p>
@@ -415,8 +415,8 @@
               <span class="cmd">/draft-pr</span> when you're done.
             </div>
             <ul class="list" style="margin-top: 10px">
-              <li class="fragment">With enough automation, this runs on ticket creation.</li>
-              <li class="fragment">Juggle many at once with worktrees. Watch your token usage.</li>
+              <li>With enough automation, this runs on ticket creation.</li>
+              <li>Juggle many at once with worktrees. Watch your token usage.</li>
             </ul>
           </div>
           <div class="placeholder">Screenshot of the resulting PR</div>
@@ -464,9 +464,9 @@
           <div class="node out"><strong>Next PR is better</strong><span>↺ and repeat</span></div>
         </div>
         <ul class="list" style="margin-top: 40px">
-          <li class="fragment">Over time, you have fewer and fewer things to say.</li>
-          <li class="fragment">Review becomes a skim, because you've built trust in the system.</li>
-          <li class="fragment">Backlog → implementation → reviewed PR, <b>with no manual intervention</b>.</li>
+          <li>Over time, you have fewer and fewer things to say.</li>
+          <li>Review becomes a skim, because you've built trust in the system.</li>
+          <li>Backlog → implementation → reviewed PR, <b>with no manual intervention</b>.</li>
         </ul>
       </section>
 
@@ -478,9 +478,9 @@
           <div class="stack">
             <p>Unity CLI can send taps to the editor and enter/exit Play Mode, so even end-to-end QA can be automated.</p>
             <ul class="list">
-              <li class="fragment">Tag UI click targets with identifiers.</li>
-              <li class="fragment">Write <b>feature maps</b> next to prefabs: how to drive them in a standalone Play Mode scene.</li>
-              <li class="fragment">Pause time and tick it forward in controlled increments.</li>
+              <li>Tag UI click targets with identifiers.</li>
+              <li>Write <b>feature maps</b> next to prefabs: how to drive them in a standalone Play Mode scene.</li>
+              <li>Pause time and tick it forward in controlled increments.</li>
             </ul>
           </div>
           <div class="placeholder">Screenshot of the preview scene</div>
@@ -528,10 +528,10 @@
         <h2>Let the gains compound</h2>
         <div class="ladder">
           <div class="rung now" style="height: 22%">&lt;10</div>
-          <div class="rung fragment" style="height: 36%">10</div>
-          <div class="rung fragment" style="height: 52%">20</div>
-          <div class="rung fragment" style="height: 74%">50</div>
-          <div class="rung fragment" style="height: 100%">100</div>
+          <div class="rung" style="height: 36%">10</div>
+          <div class="rung" style="height: 52%">20</div>
+          <div class="rung" style="height: 74%">50</div>
+          <div class="rung" style="height: 100%">100</div>
         </div>
         <p class="muted" style="margin-top: 20px">PRs per day. Most days, we're below 10 today.</p>
       </section>

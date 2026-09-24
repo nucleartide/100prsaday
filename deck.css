@@ -1,13 +1,18 @@
 :root {
-  --bg: #0e1116;
-  --bg-2: #161b23;
-  --panel: #1c232e;
-  --line: #2b3441;
-  --text: #e8ecf1;
-  --muted: #9aa5b4;
-  --accent: #ff8a3d;
-  --accent-2: #4fd1c5;
-  --danger: #ff6b6b;
+  --mlb-navy: #041e42;
+  --mlb-red: #bf0d3e;
+  --bg: #03173a;
+  --bg-2: #06224b;
+  --panel: #0a2c5a;
+  --line: #1d4377;
+  --text: #f4f6fa;
+  --muted: #a9b8cf;
+  --accent: #ff4d6d;
+  --accent-rgb: 255, 77, 109;
+  --accent-fill: var(--mlb-red);
+  --accent-2: #8fc2ff;
+  --accent-2-rgb: 143, 194, 255;
+  --danger: var(--accent);
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Roboto, sans-serif;
   --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
 }
@@ -56,10 +61,37 @@ html, body {
   visibility: hidden;
   transition: opacity 0.35s ease, visibility 0.35s;
   background:
-    radial-gradient(1200px 600px at 110% -10%, rgba(255, 138, 61, 0.08), transparent 60%),
-    radial-gradient(900px 500px at -10% 110%, rgba(79, 209, 197, 0.06), transparent 60%),
+    radial-gradient(1200px 600px at 110% -10%, rgba(var(--accent-rgb), 0.07), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(var(--accent-2-rgb), 0.08), transparent 60%),
     var(--bg);
 }
+
+/* Red panel + white stripe, echoing the diagonal in the MLB logo */
+.slide.title::after,
+.slide.section::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  bottom: -20px;
+  right: -260px;
+  width: 460px;
+  background: var(--mlb-red);
+  border-left: 18px solid #fff;
+  transform: skewX(24deg);
+  transform-origin: top;
+}
+.slide.title > *, .slide.section > * { position: relative; z-index: 1; }
+
+.brand {
+  position: absolute;
+  left: 40px;
+  bottom: 22px;
+  width: 58px;
+  z-index: 5;
+  pointer-events: none;
+}
+#deck:has(.slide.title.active, .slide.section.active) .brand { display: none; }
+.slide.title .logo { width: 170px; margin-bottom: 36px; }
 
 .slide.active { opacity: 1; visibility: visible; }
 .slide .notes { display: none; }
@@ -102,7 +134,7 @@ ul.list li::before {
   width: 12px;
   height: 12px;
   border-radius: 3px;
-  background: var(--accent);
+  background: var(--accent-fill);
 }
 
 ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
@@ -118,7 +150,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 
 /* ---------- Title & section slides ---------- */
 
-.slide.title h1 { font-size: 76px; max-width: 1040px; }
+.slide.title h1 { font-size: 72px; max-width: 900px; }
 .slide.title .subtitle { font-size: 32px; color: var(--muted); margin-top: 24px; }
 .slide.title .byline {
   margin-top: auto;
@@ -178,16 +210,16 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 }
 
 .callout {
-  border: 1px solid rgba(255, 138, 61, 0.45);
-  background: rgba(255, 138, 61, 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  background: rgba(var(--accent-rgb), 0.08);
   border-radius: 14px;
   padding: 20px 26px;
   font-size: 26px;
   line-height: 1.4;
 }
 .callout.teal {
-  border-color: rgba(79, 209, 197, 0.45);
-  background: rgba(79, 209, 197, 0.08);
+  border-color: rgba(var(--accent-2-rgb), 0.45);
+  background: rgba(var(--accent-2-rgb), 0.08);
 }
 
 .chips { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -201,7 +233,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 .chip.mono { font-family: var(--mono); font-size: 18px; color: var(--accent-2); }
 
 .prompt {
-  background: #0a0d12;
+  background: #021330;
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 22px 26px;
@@ -223,7 +255,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 .placeholder {
   flex: 1;
   min-height: 160px;
-  border: 2px dashed #3a4554;
+  border: 2px dashed #2a5391;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -270,9 +302,9 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
   color: var(--muted);
 }
 .tracker span.on {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #1a0d03;
+  border-color: var(--accent-fill);
+  background: var(--accent-fill);
+  color: #fff;
   font-weight: 700;
 }
 
@@ -313,7 +345,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 .io { display: grid; grid-template-columns: 1.4fr auto 1fr; gap: 32px; align-items: center; }
 .io .funnel { font-size: 64px; color: var(--accent); }
 .io .output {
-  background: rgba(255, 138, 61, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
   border: 2px solid var(--accent);
   border-radius: 20px;
   padding: 36px 28px;
@@ -326,7 +358,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
 .ladder .rung {
   flex: 1;
   border-radius: 14px 14px 0 0;
-  background: linear-gradient(180deg, var(--accent), rgba(255, 138, 61, 0.25));
+  background: linear-gradient(180deg, var(--accent-fill), rgba(var(--accent-rgb), 0.3));
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -334,7 +366,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
   font-family: var(--mono);
   font-weight: 800;
   font-size: 34px;
-  color: #1a0d03;
+  color: #fff;
 }
 .ladder .rung.now {
   background: var(--panel);
@@ -362,7 +394,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
   background: rgba(255, 255, 255, 0.06);
   z-index: 10;
 }
-.progress > div { height: 100%; width: 0; background: var(--accent); transition: width 0.3s ease; }
+.progress > div { height: 100%; width: 0; background: var(--accent-fill); transition: width 0.3s ease; }
 
 .counter {
   position: fixed;
@@ -396,7 +428,7 @@ body.presenter {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   grid-template-rows: 100vh;
-  background: #06080b;
+  background: #010b1d;
 }
 body.presenter .stage { width: auto; height: auto; }
 body.presenter #main-stage { margin: 20px 10px 20px 20px; }

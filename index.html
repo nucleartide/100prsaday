@@ -395,20 +395,16 @@
         <div class="tracker" data-stage="2"></div>
         <div class="kicker">Stage 3 · Tech Review</div>
         <h2>Human review is the biggest bottleneck</h2>
-        <div class="cols">
-          <div class="stack">
-            <p>People are busy. PRs wait.</p>
-            <div class="callout teal">Major system decisions should <b>always</b> get human review, so the system doesn't go off the rails.</div>
-          </div>
-          <div class="stack">
-            <p class="muted">But a PR should be quick to review if it:</p>
-            <ul class="list">
-              <li>Doesn't introduce new architecture (that's your job)</li>
-              <li>Follows the existing architecture</li>
-              <li>Has been verified through automated tests</li>
-              <li>Passes static analysis: linters, compilers, Roslyn analyzers, formatters in CI</li>
-            </ul>
-          </div>
+        <p class="lede" style="margin-bottom: 22px">People are busy. PRs wait.</p>
+        <div class="callout teal" style="font-size: 24px; margin-bottom: 28px">
+          Major system decisions should <b>always</b> get human review, so the system doesn't go off the rails.
+        </div>
+        <p class="muted" style="font-size: 22px; margin-bottom: 16px">Everything else should be a skim if the PR:</p>
+        <div class="grid-2" style="gap: 16px">
+          <div class="card tight"><h3>Doesn't invent architecture</h3><p>That's your job to design and oversee.</p></div>
+          <div class="card tight"><h3>Follows existing patterns</h3><p>Fits the architecture already in place.</p></div>
+          <div class="card tight"><h3>Passes automated tests</h3><p>Verified without a human in the loop.</p></div>
+          <div class="card tight"><h3>Passes static analysis</h3><p>Linters, compilers, Roslyn analyzers, formatters in CI.</p></div>
         </div>
         <aside class="notes">
           <p>There's nothing particularly special about a human's feedback for changes that work within an existing architecture.</p>

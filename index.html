@@ -360,14 +360,14 @@
         <div class="tracker" data-stage="1"></div>
         <div class="kicker">Example · iOS layout</div>
         <h2>A prompt with a checkable condition</h2>
-        <div class="cols wide-left">
-          <div class="prompt">
+        <div class="cols" style="grid-template-columns: 1fr 1.45fr; gap: 28px">
+          <div class="prompt" style="font-size: 18px; align-self: start">
             Take screenshots of all the prefabs at iPhone resolution.<br><br>
             Make every Canvas Scaler consistent: Match Height = 1, reference resolution 1779 × 2556.<br><br>
             Take the screenshots again. They should be equivalent, but the Canvas Scaler settings should now be consistent across the board.<br><br>
             <span class="cmd">/draft-pr</span> when you're done.
           </div>
-          <div class="placeholder">Screenshot of the resulting PR</div>
+          <div class="figure"><img src="assets/ios-layout-pr.jpg" alt="Merged PR CBAT-3037: Match canvas scalers in in-game UI prefabs, with before/after screenshots"></div>
         </div>
       </section>
 

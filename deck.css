@@ -283,6 +283,7 @@ ul.list.compact li { font-size: 22px; margin-bottom: 12px; }
   min-height: 0;
 }
 .figure img { max-width: 100%; max-height: 100%; border-radius: 12px; }
+.figure img.chart { background: #fff; padding: 12px; }
 
 /* ---------- Pipeline diagrams ---------- */
 
